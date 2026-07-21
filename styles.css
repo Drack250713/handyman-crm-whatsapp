@@ -1,0 +1,55 @@
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.hero-slide {
+    transition: opacity 1s ease-in-out;
+}
+
+/* Regla definitiva para la barra de navegación superior */
+.fixed-navbar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999 !important;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Ajuste para que el contenedor principal no se encime con la barra de navegación */
+main {
+    margin-top: 72px;
+}
+
+/* Clase activa para enlaces del menú de navegación */
+.active-link {
+    color: #000a1e !important; 
+    font-weight: 700 !important; 
+    border-bottom-color: #FF8C00 !important;
+}
+
+/* Tipografía y espaciado móvil para el Hero */
+@media (max-width: 768px) {
+    .hero-content-wrapper {
+        padding-top: 6rem !important;
+    }
+    .hero-title {
+        font-size: 2.25rem !important;
+        line-height: 2.75rem !important;
+    }
+    .hero-desc {
+        font-size: 1.125rem !important;
+        line-height: 1.75rem !important;
+    }
+}
