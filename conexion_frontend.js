@@ -2,6 +2,26 @@
 async function enviarLeadCrm(event) {
     event.preventDefault(); // Evita que la página se recargue
 
+    const form = document.querySelector('#quote-form');
+    
+    if (!form.checkValidity()) {
+        // Detener el envío si hay campos incompletos o incorrectos
+        event.stopPropagation();
+
+        // Marcar visualmente todos los campos inválidos en rojo
+        form.querySelectorAll('input, select, textarea').forEach(input => {
+            if (!input.checkValidity()) {
+                input.classList.add('is-invalid');
+            } else {
+                input.classList.remove('is-invalid');
+            }
+        });
+
+        // Disparar las alertas visuales nativas del navegador
+        form.reportValidity();
+        return false;
+    }
+
     // Estructura de datos requerida por el backend multi-tenant de CreSer CRM
     const emailInput = document.getElementById('email');
     const projectDetailsInput = document.getElementById('detalles');

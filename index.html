@@ -108,32 +108,47 @@
     </script>
     <!-- Enlace a estilos CSS externalizado -->
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .is-invalid {
+            border: 2px solid #dc3545 !important;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+        }
+        .phone-help-text {
+            display: block;
+            font-size: 0.72rem;
+            color: #6c757d;
+            margin-top: 4px;
+            line-height: 1.2;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+    </style>
 </head>
 <body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
 <!-- 1. Fixed Navbar con la clase definida en el CSS -->
 <header class="fixed-navbar border-b border-outline-variant relative">
     <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
         <a href="#" class="font-headline-md text-headline-md font-bold text-primary">EliteCraft Handyman</a>
-        <nav class="hidden md:flex items-center gap-8 font-body-md text-body-md">
+        <nav class="hidden lg:flex items-center gap-8 font-body-md text-body-md">
             <a class="nav-link border-b-2 border-transparent pb-1 text-on-surface-variant hover:text-brand-orange transition-colors duration-200" href="#services">Services</a>
             <a class="nav-link border-b-2 border-transparent pb-1 text-on-surface-variant hover:text-brand-orange transition-colors duration-200" href="#expertise">Portfolio</a>
             <a class="nav-link border-b-2 border-transparent pb-1 text-on-surface-variant hover:text-brand-orange transition-colors duration-200" href="#reviews">Reviews</a>
             <a class="nav-link border-b-2 border-transparent pb-1 text-on-surface-variant hover:text-brand-orange transition-colors duration-200" href="#quote-form">Contact</a>
         </nav>
         <div class="flex items-center gap-3">
-            <a href="#quote-form" class="md:hidden bg-brand-orange text-white px-3 py-2 text-xs font-bold rounded hover:opacity-90 transition-all shadow-sm uppercase tracking-wider">
+            <a href="#quote-form" class="lg:hidden bg-brand-orange text-white px-3 py-2 text-xs font-bold rounded hover:opacity-90 transition-all shadow-sm uppercase tracking-wider">
                 Quote
             </a>
-            <button aria-label="Toggle menu" class="text-primary md:hidden flex items-center justify-center" id="mobile-menu-toggle">
+            <button aria-label="Toggle menu" class="text-primary lg:hidden flex items-center justify-center" id="mobile-menu-toggle">
                 <span class="material-symbols-outlined text-[32px]">menu</span>
             </button>
-            <a href="#quote-form" class="hidden md:inline-block bg-brand-orange text-white px-6 py-3 font-button text-button rounded-lg hover:opacity-90 transition-all shadow-sm">
+            <a href="#quote-form" class="hidden lg:inline-block bg-brand-orange text-white px-6 py-3 font-button text-button rounded-lg hover:opacity-90 transition-all shadow-sm">
                 Request Quote
             </a>
         </div>
     </div>
     <!-- Mobile Dropdown -->
-    <div class="hidden bg-surface flex-col p-6 gap-4 md:hidden border-t border-outline-variant absolute left-0 right-0 top-full shadow-lg" id="mobile-menu">
+    <div class="hidden bg-surface flex-col p-6 gap-4 lg:hidden border-t border-outline-variant absolute left-0 right-0 top-full shadow-lg" id="mobile-menu">
         <a class="mobile-nav-link font-body-md text-on-surface-variant hover:text-brand-orange py-2 transition-colors duration-200" href="#services">Services</a>
         <a class="mobile-nav-link font-body-md text-on-surface-variant hover:text-brand-orange py-2 transition-colors duration-200" href="#expertise">Portfolio</a>
         <a class="mobile-nav-link font-body-md text-on-surface-variant hover:text-brand-orange py-2 transition-colors duration-200" href="#reviews">Reviews</a>
@@ -374,7 +389,7 @@
         <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
             <div class="flex flex-col lg:flex-row gap-16">
                 <!-- Contact Info -->
-                <div class="lg:w-1/2">
+                <div class="lg:w-5/12">
                     <h2 class="font-headline-lg text-headline-lg text-primary mb-6">Get Your Free Estimate</h2>
                     <p class="font-body-lg text-body-lg text-on-surface-variant mb-12">
                         Ready to restore your home's perfection? Fill out the form or reach out directly. Our elite team is standing by to assist with your maintenance needs.
@@ -411,7 +426,7 @@
                 </div>
 
                 <!-- Contact Form -->
-                <div class="lg:w-1/2 bg-white p-8 md:p-12 shadow-2xl rounded-sm border border-outline-variant">
+                <div class="lg:w-7/12 bg-white p-8 md:p-12 shadow-2xl rounded-sm border border-outline-variant">
                     <form class="space-y-6" id="quote-form" onsubmit="enviarLeadCrm(event)">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="flex flex-col gap-2">
@@ -420,25 +435,26 @@
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label class="font-label-md text-label-md text-on-surface">Phone</label>
-                                <input id="telefono" required class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest" placeholder="(555) 000-0000" type="tel"/>
+                                <input id="telefono" required type="tel" maxlength="10" pattern="[0-9]{10}" class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest" placeholder="Ej. 6641234567" />
+                                <p class="phone-help-text italic">10 dígitos sin espacios ni guiones.</p>
                             </div>
                         </div>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="flex flex-col gap-2">
                                 <label class="font-label-md text-label-md text-on-surface">Email</label>
-                                <input id="email" class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest" placeholder="email@address.com" type="email"/>
+                                <input id="email" required pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest" placeholder="email@address.com" type="email"/>
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label class="font-label-md text-label-md text-on-surface">Zip Code</label>
-                                <input id="codigo_postal" required class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest" placeholder="Zip Code" type="text"/>
+                                <input id="codigo_postal" required pattern="^(\d{5})(-\d{4})?$" class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest" placeholder="Ej. 30301 o 22710" type="text"/>
                             </div>
                         </div>
 
                         <div class="flex flex-col gap-2">
                             <label class="font-label-md text-label-md text-on-surface">Preferred Contact Method</label>
-                            <select id="metodo_contacto" class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest">
-                                <option disabled="" selected="" value="">Select Contact Method</option>
+                            <select id="metodo_contacto" required class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest">
+                                <option disabled selected value="">Select Contact Method</option>
                                 <option value="whatsapp">WhatsApp</option>
                                 <option value="phone">Phone call</option>
                             </select>
@@ -446,7 +462,7 @@
                         <div class="flex flex-col gap-2">
                             <label class="font-label-md text-label-md text-on-surface">Service Needed</label>
                             <select id="servicio" required class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest">
-                                <option disabled="" selected="" value="">Select a Service</option>
+                                <option disabled selected value="">Select a Service</option>
                                 <option value="Plumbing">Plumbing</option>
                                 <option value="Electrical">Electrical</option>
                                 <option value="Carpentry">Carpentry</option>
@@ -455,10 +471,10 @@
                             </select>
                         </div>
                         <div class="flex flex-col gap-2">
-                            <label class="font-label-md text-label-md text-on-surface">Project Details (Optional)</label>
-                            <textarea id="detalles" class="p-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest" placeholder="Briefly describe what you need help with..." rows="4"></textarea>
+                            <label class="font-label-md text-label-md text-on-surface">Project Details</label>
+                            <textarea id="detalles" required minlength="5" class="p-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest" placeholder="Briefly describe what you need help with..." rows="4"></textarea>
                         </div>
-                        <button class="w-full bg-brand-orange text-white py-5 font-button text-button rounded-sm hover:brightness-110 transition-all shadow-md" type="submit">
+                        <button id="submit-btn" class="w-full bg-brand-orange text-white py-5 font-button text-button rounded-sm hover:brightness-110 transition-all shadow-md" type="submit">
                             Submit Request
                         </button>
                     </form>
@@ -631,6 +647,28 @@
             mobileMenu.classList.add('hidden');
             mobileMenu.classList.remove('flex');
             if(menuToggle) menuToggle.querySelector('span').textContent = 'menu';
+        });
+    });
+
+    // Form Validation Logic
+    const quoteForm = document.getElementById('quote-form');
+    const inputs = document.querySelectorAll('#quote-form input, #quote-form select, #quote-form textarea');
+
+    inputs.forEach(input => {
+        // Al salir del campo (TAB o click afuera)
+        input.addEventListener('blur', () => {
+            if (!input.checkValidity()) {
+                input.classList.add('is-invalid');
+            } else {
+                input.classList.remove('is-invalid');
+            }
+        });
+
+        // Al escribir para remover el rojo si ya corrigió el error
+        input.addEventListener('input', () => {
+            if (input.checkValidity()) {
+                input.classList.remove('is-invalid');
+            }
         });
     });
 </script>

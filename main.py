@@ -6,7 +6,7 @@ from pydantic import BaseModel
 from typing import Optional
 import crud
 from database import inicializar_base_de_datos
-from services.whatsapp import enviar_alerta_nuevo_lead
+from services.whatsapp import enviar_alerta_nuevo_lead, send_client_confirmation
 
 app = FastAPI(title="Handyman CRM API")
 
@@ -72,6 +72,12 @@ async def recibir_lead_web(lead: LeadWeb):
         zip_code=lead.zip_code,
         email=lead.email,
         project_details=lead.project_details
+    )
+    
+    # Enviar confirmación automática al cliente
+    await send_client_confirmation(
+        to_phone=lead.phone,
+        customer_name=lead.customer_name
     )
         
     return {"status": "success", "message": "Lead registrado con éxito", "lead_id": lead_id}
