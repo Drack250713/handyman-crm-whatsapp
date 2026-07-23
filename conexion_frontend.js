@@ -1,46 +1,47 @@
-// Función para enviar el lead desde el formulario de la Landing Page
 async function enviarLeadCrm(event) {
-    event.preventDefault(); // Evita que la página se recargue
+    if (event) {
+        if (typeof event.preventDefault === 'function') {
+            event.preventDefault();
+        }
+        if (typeof event.stopPropagation === 'function') event.stopPropagation();
+    }
 
-    const form = document.querySelector('#quote-form');
-    
-    if (!form.checkValidity()) {
-        // Detener el envío si hay campos incompletos o incorrectos
-        event.stopPropagation();
+    const formElement = document.getElementById('quote-form');
+    const submitBtn = document.getElementById('submit-btn');
 
-        // Marcar visualmente todos los campos inválidos en rojo
-        form.querySelectorAll('input, select, textarea').forEach(input => {
-            if (!input.checkValidity()) {
-                input.classList.add('is-invalid');
-            } else {
-                input.classList.remove('is-invalid');
-            }
-        });
-
-        // Disparar las alertas visuales nativas del navegador
-        form.reportValidity();
+    // Validación de seguridad por si se invoca programáticamente
+    if (formElement && typeof formElement.checkValidity === 'function' && !formElement.checkValidity()) {
+        formElement.reportValidity();
         return false;
     }
 
-    // Estructura de datos requerida por el backend multi-tenant de CreSer CRM
-    const emailInput = document.getElementById('email');
-    const projectDetailsInput = document.getElementById('detalles');
+    if (submitBtn) {
+        submitBtn.innerText = "Sending...";
+        submitBtn.disabled = true;
+    }
+
+    const getVal = (id) => {
+        const el = document.getElementById(id);
+        return el ? el.value : '';
+    };
 
     const leadData = {
-        user_id: 1, // ID del administrador (CreSer Marketing)
-        customer_name: document.getElementById('nombre').value,
-        phone: document.getElementById('telefono').value,
-        zip_code: document.getElementById('codigo_postal').value,
-        service_type: document.getElementById('servicio').value,
-        email: emailInput ? emailInput.value : null,
-        project_details: projectDetailsInput ? projectDetailsInput.value : null
+        user_id: 1,
+        customer_name: getVal('nombre'),
+        phone: getVal('telefono'),
+        zip_code: getVal('codigo_postal'),
+        service_type: getVal('servicio'),
+        preferred_contact: getVal('metodo_contacto'),
+        email: getVal('email') || null,
+        project_details: getVal('detalles') || null
     };
 
     try {
         const response = await fetch('http://127.0.0.1:5000/api/leads/web', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify(leadData)
         });
@@ -48,15 +49,66 @@ async function enviarLeadCrm(event) {
         const result = await response.json();
 
         if (response.ok) {
-            console.log('✅ Lead registrado en el CRM con éxito:', result);
-            alert('¡Gracias! Tu solicitud ha sido recibida y se ha enviado una alerta de WhatsApp al administrador.');
-            // Aquí puedes redirigir o limpiar el formulario
+            // 1. Crear e inyectar el mensaje verde de éxito
+            if (formElement) {
+                let msgEl = document.getElementById('success-message-crm');
+                if (!msgEl) {
+                    msgEl = document.createElement('div');
+                    msgEl.id = 'success-message-crm';
+                    msgEl.style.cssText = 'margin-top: 20px; padding: 16px; background-color: #28a745; color: #ffffff; text-align: center; font-weight: bold; font-size: 18px; border-radius: 6px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; display: block;';
+                    formElement.insertAdjacentElement('afterend', msgEl);
+                }
+                msgEl.innerText = '¡Gracias! Tu solicitud ha sido enviada con éxito.';
+                msgEl.style.display = 'block'; // Asegurar que sea visible
+
+                setTimeout(() => {
+                    msgEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+
+            // 2. Limpiar campos sin disparar las alertas rojas de validación
+            const inputIds = ['nombre', 'telefono', 'email', 'codigo_postal', 'metodo_contacto', 'servicio', 'detalles'];
+            inputIds.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.value = '';
+                    if (el.classList) el.classList.remove('is-invalid');
+                }
+            });
         } else {
-            console.error('❌ Error en el servidor:', result);
-            alert('Hubo un problema al procesar tu solicitud.');
+            alert('Error en el servidor: ' + (result.detail || 'No se pudo procesar la solicitud.'));
         }
+
     } catch (error) {
-        console.error('❌ Error de conexión con la API:', error);
-        alert('No se pudo establecer comunicación con el servidor del CRM.');
+        console.error("Error en fetch:", error);
+        alert('No se pudo conectar con el servidor backend en el puerto 5000.');
+    } finally {
+        if (submitBtn) {
+            submitBtn.innerText = "Submit Request";
+            submitBtn.disabled = false;
+        }
     }
+
+    return false;
 }
+
+window.enviarLeadCrm = enviarLeadCrm;
+
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('quote-form');
+    const submitBtn = document.getElementById('submit-btn');
+
+    if (form && submitBtn) {
+        submitBtn.addEventListener('click', async function(e) {
+            e.preventDefault(); 
+            
+            // Validar manualmente para disparar tooltips HTML5 si faltan datos
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            await enviarLeadCrm(e);
+        });
+    }
+});

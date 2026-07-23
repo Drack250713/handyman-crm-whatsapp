@@ -64,20 +64,27 @@ async def recibir_lead_web(lead: LeadWeb):
     if not lead_id:
         raise HTTPException(status_code=500, detail="Error interno al registrar el lead.")
     
-    # Disparar la notificación automatizada de WhatsApp
-    await enviar_alerta_nuevo_lead(
-        customer_name=lead.customer_name,
-        phone=lead.phone,
-        service_type=lead.service_type,
-        zip_code=lead.zip_code,
-        email=lead.email,
-        project_details=lead.project_details
-    )
+    # 1. Disparar alerta de WhatsApp al admin (Protegida con try/except)
+    try:
+        await enviar_alerta_nuevo_lead(
+            customer_name=lead.customer_name,
+            phone=lead.phone,
+            service_type=lead.service_type,
+            zip_code=lead.zip_code,
+            email=lead.email,
+            project_details=lead.project_details
+        )
+    except Exception as e:
+        print(f"⚠️ Warning: Error al enviar alerta de WhatsApp al admin: {e}")
     
-    # Enviar confirmación automática al cliente
-    await send_client_confirmation(
-        to_phone=lead.phone,
-        customer_name=lead.customer_name
-    )
+    # 2. Intentar enviar la confirmación al cliente por WhatsApp
+    try:
+        await send_client_confirmation(
+            to_phone=lead.phone,
+            customer_name=lead.customer_name
+        )
+    except Exception as e:
+        print(f"⚠️ Warning: No se pudo enviar WhatsApp al cliente (Plantilla en revisión): {e}")
         
-    return {"status": "success", "message": "Lead registrado con éxito", "lead_id": lead_id}
+    # Responder SIEMPRE con éxito al frontend si el lead se guardó en BD
+    return {"status": "success", "message": "Lead registrado exitosamente", "lead_id": lead_id}

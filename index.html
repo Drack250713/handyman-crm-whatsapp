@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="en">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Handyman</title>
     <link rel="icon" href="https://fav.farm/🔧" />
-    <link href="https://fonts.googleapis.com" rel="preconnect"/>
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Montserrat:wght@600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Montserrat:wght@600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block"
+        rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script id="tailwind-config">
         try {
@@ -113,6 +116,7 @@
             border: 2px solid #dc3545 !important;
             box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
         }
+
         .phone-help-text {
             display: block;
             font-size: 0.72rem;
@@ -124,564 +128,693 @@
         }
     </style>
 </head>
+
 <body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
-<!-- 1. Fixed Navbar con la clase definida en el CSS -->
-<header class="fixed-navbar border-b border-outline-variant relative">
-    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
-        <a href="#" class="font-headline-md text-headline-md font-bold text-primary">EliteCraft Handyman</a>
-        <nav class="hidden lg:flex items-center gap-8 font-body-md text-body-md">
-            <a class="nav-link border-b-2 border-transparent pb-1 text-on-surface-variant hover:text-brand-orange transition-colors duration-200" href="#services">Services</a>
-            <a class="nav-link border-b-2 border-transparent pb-1 text-on-surface-variant hover:text-brand-orange transition-colors duration-200" href="#expertise">Portfolio</a>
-            <a class="nav-link border-b-2 border-transparent pb-1 text-on-surface-variant hover:text-brand-orange transition-colors duration-200" href="#reviews">Reviews</a>
-            <a class="nav-link border-b-2 border-transparent pb-1 text-on-surface-variant hover:text-brand-orange transition-colors duration-200" href="#quote-form">Contact</a>
-        </nav>
-        <div class="flex items-center gap-3">
-            <a href="#quote-form" class="lg:hidden bg-brand-orange text-white px-3 py-2 text-xs font-bold rounded hover:opacity-90 transition-all shadow-sm uppercase tracking-wider">
-                Quote
-            </a>
-            <button aria-label="Toggle menu" class="text-primary lg:hidden flex items-center justify-center" id="mobile-menu-toggle">
-                <span class="material-symbols-outlined text-[32px]">menu</span>
-            </button>
-            <a href="#quote-form" class="hidden lg:inline-block bg-brand-orange text-white px-6 py-3 font-button text-button rounded-lg hover:opacity-90 transition-all shadow-sm">
-                Request Quote
-            </a>
-        </div>
-    </div>
-    <!-- Mobile Dropdown -->
-    <div class="hidden bg-surface flex-col p-6 gap-4 lg:hidden border-t border-outline-variant absolute left-0 right-0 top-full shadow-lg" id="mobile-menu">
-        <a class="mobile-nav-link font-body-md text-on-surface-variant hover:text-brand-orange py-2 transition-colors duration-200" href="#services">Services</a>
-        <a class="mobile-nav-link font-body-md text-on-surface-variant hover:text-brand-orange py-2 transition-colors duration-200" href="#expertise">Portfolio</a>
-        <a class="mobile-nav-link font-body-md text-on-surface-variant hover:text-brand-orange py-2 transition-colors duration-200" href="#reviews">Reviews</a>
-        <a class="mobile-nav-link font-body-md text-on-surface-variant hover:text-brand-orange py-2 transition-colors duration-200" href="#quote-form">Contact</a>
-        <a class="bg-brand-orange text-white w-full py-4 text-center font-button text-button rounded-lg hover:opacity-90 transition-all shadow-sm mt-2" href="#quote-form">Request Quote</a>
-    </div>
-</header>
-
-<main>
-    <!-- 2. Hero Carousel Section -->
-    <section class="relative h-[80vh] flex items-center overflow-hidden" id="hero-carousel">
-        <!-- Slides Container -->
-        <div class="absolute inset-0 z-0" id="hero-slides">
-            <!-- Slide 1 (Unsplash Placeholder) -->
-            <div class="hero-slide absolute inset-0 opacity-100">
-                <div class="absolute inset-0 bg-gradient-to-r from-primary-container/90 via-primary-container/60 to-transparent z-10"></div>
-                <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070&auto=format&fit=crop')"></div>
-            </div>
-            <!-- Slide 2 (Unsplash Placeholder) -->
-            <div class="hero-slide absolute inset-0 opacity-0">
-                <div class="absolute inset-0 bg-gradient-to-r from-primary-container/90 via-primary-container/60 to-transparent z-10"></div>
-                <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1505798577917-a65157d3320a?q=80&w=2070&auto=format&fit=crop')"></div>
-            </div>
-            <!-- Slide 3 (Unsplash Placeholder) -->
-            <div class="hero-slide absolute inset-0 opacity-0">
-                <div class="absolute inset-0 bg-gradient-to-r from-primary-container/90 via-primary-container/60 to-transparent z-10"></div>
-                <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop')"></div>
-            </div>
-        </div>
-        <!-- Hero Content -->
-        <div class="absolute inset-0 flex items-center justify-center pt-16 hero-content-wrapper">
-            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full">
-                <div class="bg-on-tertiary-container/10 border border-on-tertiary-container/30 px-4 py-1 mb-6 inline-block">
-                    <span class="text-on-tertiary-container font-label-md text-label-md uppercase tracking-widest text-brand-orange">Premium Service</span>
-                </div>
-                <h1 class="font-headline-xl text-headline-xl text-white mb-6 max-w-3xl hero-title">
-                    Elite Craftsmanship for Your Home Repairs
-                </h1>
-                <p class="font-body-lg text-body-lg text-white/90 mb-10 max-w-2xl hero-desc">
-                    Professional, reliable, and insured handyman services tailored for homeowners in the USA. We bring precision to every task, from small repairs to custom installations.
-                </p>
-            </div>
-        </div>
-        <!-- Carousel Controls -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-3" id="hero-dots">
-            <button class="w-3 h-3 rounded-full bg-white transition-all opacity-100" data-slide="0"></button>
-            <button class="w-3 h-3 rounded-full bg-white transition-all opacity-40" data-slide="1"></button>
-            <button class="w-3 h-3 rounded-full bg-white transition-all opacity-40" data-slide="2"></button>
-        </div>
-        <button class="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur-sm transition-all" id="hero-prev">
-            <span class="material-symbols-outlined">chevron_left</span>
-        </button>
-        <button class="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur-sm transition-all" id="hero-next">
-            <span class="material-symbols-outlined">chevron_right</span>
-        </button>
-    </section>
-
-    <!-- 3. Services Slider Section -->
-    <section id="services" class="py-stack-lg bg-surface-container-low overflow-hidden">
-        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative">
-            <div class="text-center mb-16">
-                <h2 class="font-headline-lg text-headline-lg text-primary-container mb-4">Our Expert Services</h2>
-                <div class="w-20 h-1.5 bg-brand-orange mx-auto rounded-full"></div>
-            </div>
-            <!-- Navigation Arrows for Desktop -->
-            <div class="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-8 z-10 hidden sm:block">
-                <button class="w-12 h-12 bg-white rounded-full flex items-center justify-center border border-outline-variant hover:bg-brand-orange hover:text-white transition-all shadow-md" id="prevBtn">
-                    <span class="material-symbols-outlined">chevron_left</span>
+    <!-- 1. Fixed Navbar con la clase definida en el CSS -->
+    <header class="fixed-navbar border-b border-outline-variant relative">
+        <div
+            class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+            <a href="#" class="font-headline-md text-headline-md font-bold text-primary">EliteCraft Handyman</a>
+            <nav class="hidden lg:flex items-center gap-8 font-body-md text-body-md">
+                <a class="nav-link border-b-2 border-transparent pb-1 text-on-surface-variant hover:text-brand-orange transition-colors duration-200"
+                    href="#services">Services</a>
+                <a class="nav-link border-b-2 border-transparent pb-1 text-on-surface-variant hover:text-brand-orange transition-colors duration-200"
+                    href="#expertise">Portfolio</a>
+                <a class="nav-link border-b-2 border-transparent pb-1 text-on-surface-variant hover:text-brand-orange transition-colors duration-200"
+                    href="#reviews">Reviews</a>
+                <a class="nav-link border-b-2 border-transparent pb-1 text-on-surface-variant hover:text-brand-orange transition-colors duration-200"
+                    href="#contact-section">Contact</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <a href="#contact-section"
+                    class="lg:hidden bg-brand-orange text-white px-3 py-2 text-xs font-bold rounded hover:opacity-90 transition-all shadow-sm uppercase tracking-wider">
+                    Quote
+                </a>
+                <button aria-label="Toggle menu" class="text-primary lg:hidden flex items-center justify-center"
+                    id="mobile-menu-toggle">
+                    <span class="material-symbols-outlined text-[32px]">menu</span>
                 </button>
-            </div>
-            <div class="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-8 z-10 hidden sm:block">
-                <button class="w-12 h-12 bg-white rounded-full flex items-center justify-center border border-outline-variant hover:bg-brand-orange hover:text-white transition-all shadow-md" id="nextBtn">
-                    <span class="material-symbols-outlined">chevron_right</span>
-                </button>
-            </div>
-            <!-- Horizontally Scrollable Container -->
-            <div class="flex gap-gutter overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth pb-8" id="services-slider">
-                <!-- Plumbing -->
-                <div class="min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(25%-18px)] snap-center">
-                    <div class="bg-white p-8 border border-outline-variant hover:border-brand-orange transition-colors group h-full">
-                        <div class="w-16 h-16 bg-surface-container flex items-center justify-center rounded-xl mb-6 group-hover:bg-brand-orange/10 transition-colors">
-                            <span class="material-symbols-outlined text-4xl text-primary-container group-hover:text-brand-orange" style="font-variation-settings: 'FILL' 1;">plumbing</span>
-                        </div>
-                        <h3 class="font-headline-md text-headline-md text-primary mb-3">Plumbing</h3>
-                        <p class="text-on-surface-variant font-body-md">Leaks, faucets, and pipe repairs handled with architectural precision to ensure longevity.</p>
-                    </div>
-                </div>
-                <!-- Electrical -->
-                <div class="min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(25%-18px)] snap-center">
-                    <div class="bg-white p-8 border border-outline-variant hover:border-brand-orange transition-colors group h-full">
-                        <div class="w-16 h-16 bg-surface-container flex items-center justify-center rounded-xl mb-6 group-hover:bg-brand-orange/10 transition-colors">
-                            <span class="material-symbols-outlined text-4xl text-primary-container group-hover:text-brand-orange" style="font-variation-settings: 'FILL' 1;">electrical_services</span>
-                        </div>
-                        <h3 class="font-headline-md text-headline-md text-primary mb-3">Electrical</h3>
-                        <p class="text-on-surface-variant font-body-md">Outlets, lighting installations, and small repairs executed following strict safety standards.</p>
-                    </div>
-                </div>
-                <!-- Carpentry -->
-                <div class="min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(25%-18px)] snap-center">
-                    <div class="bg-white p-8 border border-outline-variant hover:border-brand-orange transition-colors group h-full">
-                        <div class="w-16 h-16 bg-surface-container flex items-center justify-center rounded-xl mb-6 group-hover:bg-brand-orange/10 transition-colors">
-                            <span class="material-symbols-outlined text-4xl text-primary-container group-hover:text-brand-orange" style="font-variation-settings: 'FILL' 1;">carpenter</span>
-                        </div>
-                        <h3 class="font-headline-md text-headline-md text-primary mb-3">Carpentry</h3>
-                        <p class="text-on-surface-variant font-body-md">Custom shelving, door repairs, and detailed trim work for a refined home aesthetic.</p>
-                    </div>
-                </div>
-                <!-- General Repairs -->
-                <div class="min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(25%-18px)] snap-center">
-                    <div class="bg-white p-8 border border-outline-variant hover:border-brand-orange transition-colors group h-full">
-                        <div class="w-16 h-16 bg-surface-container flex items-center justify-center rounded-xl mb-6 group-hover:bg-brand-orange/10 transition-colors">
-                            <span class="material-symbols-outlined text-4xl text-primary-container group-hover:text-brand-orange" style="font-variation-settings: 'FILL' 1;">build</span>
-                        </div>
-                        <h3 class="font-headline-md text-headline-md text-primary mb-3">General Repairs</h3>
-                        <p class="text-on-surface-variant font-body-md">Expert drywall repair, painting, and general maintenance for a perfectly kept property.</p>
-                    </div>
-                </div>
-                <!-- HVAC Maintenance -->
-                <div class="min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(25%-18px)] snap-center">
-                    <div class="bg-white p-8 border border-outline-variant hover:border-brand-orange transition-colors group h-full">
-                        <div class="w-16 h-16 bg-surface-container flex items-center justify-center rounded-xl mb-6 group-hover:bg-brand-orange/10 transition-colors">
-                            <span class="material-symbols-outlined text-4xl text-primary-container group-hover:text-brand-orange" style="font-variation-settings: 'FILL' 1;">ac_unit</span>
-                        </div>
-                        <h3 class="font-headline-md text-headline-md text-primary mb-3">HVAC Tune-up</h3>
-                        <p class="text-on-surface-variant font-body-md">Seasonal filter changes and maintenance to ensure your climate control stays elite.</p>
-                    </div>
-                </div>
-                <!-- Painting -->
-                <div class="min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(25%-18px)] snap-center">
-                    <div class="bg-white p-8 border border-outline-variant hover:border-brand-orange transition-colors group h-full">
-                        <div class="w-16 h-16 bg-surface-container flex items-center justify-center rounded-xl mb-6 group-hover:bg-brand-orange/10 transition-colors">
-                            <span class="material-symbols-outlined text-4xl text-primary-container group-hover:text-brand-orange" style="font-variation-settings: 'FILL' 1;">format_paint</span>
-                        </div>
-                        <h3 class="font-headline-md text-headline-md text-primary mb-3">Interior Painting</h3>
-                        <p class="text-on-surface-variant font-body-md">Professional finish for rooms and trim with high-quality paint and clean edges.</p>
-                    </div>
-                </div>
+                <a href="#contact-section"
+                    class="hidden lg:inline-block bg-brand-orange text-white px-6 py-3 font-button text-button rounded-lg hover:opacity-90 transition-all shadow-sm">
+                    Request Quote
+                </a>
             </div>
         </div>
-    </section>
-
-    <!-- Expertise (Gallery) Section -->
-    <section id="expertise" class="py-stack-lg bg-surface">
-        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-            <div class="text-center mb-16">
-                <h2 class="font-headline-lg text-headline-lg text-primary-container mb-4">Our Portfolio</h2>
-                <div class="w-20 h-1.5 bg-brand-orange mx-auto rounded-full"></div>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Gallery Item 1 -->
-                <div class="h-64 bg-cover bg-center rounded-lg shadow-md hover:shadow-xl transition-shadow" style="background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=2069&auto=format&fit=crop');"></div>
-                <!-- Gallery Item 2 -->
-                <div class="h-64 bg-cover bg-center rounded-lg shadow-md hover:shadow-xl transition-shadow" style="background-image: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070&auto=format&fit=crop');"></div>
-                <!-- Gallery Item 3 -->
-                <div class="h-64 bg-cover bg-center rounded-lg shadow-md hover:shadow-xl transition-shadow" style="background-image: url('https://images.unsplash.com/photo-1542013936693-884638332954?q=80&w=2070&auto=format&fit=crop');"></div>
-                <!-- Gallery Item 4 -->
-                <div class="h-64 bg-cover bg-center rounded-lg shadow-md hover:shadow-xl transition-shadow" style="background-image: url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop');"></div>
-                <!-- Gallery Item 5 -->
-                <div class="h-64 bg-cover bg-center rounded-lg shadow-md hover:shadow-xl transition-shadow" style="background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop');"></div>
-                <!-- Gallery Item 6 -->
-                <div class="h-64 bg-cover bg-center rounded-lg shadow-md hover:shadow-xl transition-shadow" style="background-image: url('https://images.unsplash.com/photo-1505798577917-a65157d3320a?q=80&w=2070&auto=format&fit=crop');"></div>
-            </div>
+        <!-- Mobile Dropdown -->
+        <div class="hidden bg-surface flex-col p-6 gap-4 lg:hidden border-t border-outline-variant absolute left-0 right-0 top-full shadow-lg"
+            id="mobile-menu">
+            <a class="mobile-nav-link font-body-md text-on-surface-variant hover:text-brand-orange py-2 transition-colors duration-200"
+                href="#services">Services</a>
+            <a class="mobile-nav-link font-body-md text-on-surface-variant hover:text-brand-orange py-2 transition-colors duration-200"
+                href="#expertise">Portfolio</a>
+            <a class="mobile-nav-link font-body-md text-on-surface-variant hover:text-brand-orange py-2 transition-colors duration-200"
+                href="#reviews">Reviews</a>
+            <a class="mobile-nav-link font-body-md text-on-surface-variant hover:text-brand-orange py-2 transition-colors duration-200"
+                href="#contact-section">Contact</a>
+            <a class="bg-brand-orange text-white w-full py-4 text-center font-button text-button rounded-lg hover:opacity-90 transition-all shadow-sm mt-2"
+                href="#contact-section">Request Quote</a>
         </div>
-    </section>
+    </header>
 
-    <!-- Reviews Section -->
-    <section id="reviews" class="py-stack-lg bg-surface-container-low">
-        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-            <div class="text-center mb-16">
-                <h2 class="font-headline-lg text-headline-lg text-primary-container mb-4">Client Reviews</h2>
-                <div class="w-20 h-1.5 bg-brand-orange mx-auto rounded-full"></div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Review 1 -->
-                <div class="bg-white p-8 rounded-lg shadow-md border border-outline-variant">
-                    <div class="flex text-brand-orange mb-4">
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+    <main>
+        <!-- 2. Hero Carousel Section -->
+        <section class="relative h-[80vh] flex items-center overflow-hidden" id="hero-carousel">
+            <!-- Slides Container -->
+            <div class="absolute inset-0 z-0" id="hero-slides">
+                <!-- Slide 1 (Unsplash Placeholder) -->
+                <div class="hero-slide absolute inset-0 opacity-100">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-primary-container/90 via-primary-container/60 to-transparent z-10">
                     </div>
-                    <p class="text-on-surface-variant font-body-md italic mb-6">"Exceptional service! They arrived on time, fixed my plumbing issue perfectly, and left the place spotless. Highly recommended."</p>
-                    <div class="font-label-md text-primary font-bold">- Sarah Jenkins</div>
+                    <div class="w-full h-full bg-cover bg-center"
+                        style="background-image: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070&auto=format&fit=crop')">
+                    </div>
                 </div>
-                <!-- Review 2 -->
-                <div class="bg-white p-8 rounded-lg shadow-md border border-outline-variant">
-                    <div class="flex text-brand-orange mb-4">
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                <!-- Slide 2 (Unsplash Placeholder) -->
+                <div class="hero-slide absolute inset-0 opacity-0">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-primary-container/90 via-primary-container/60 to-transparent z-10">
                     </div>
-                    <p class="text-on-surface-variant font-body-md italic mb-6">"EliteCraft completely transformed our old deck. The carpentry work is top-notch and the price was very reasonable."</p>
-                    <div class="font-label-md text-primary font-bold">- Mark T.</div>
+                    <div class="w-full h-full bg-cover bg-center"
+                        style="background-image: url('https://images.unsplash.com/photo-1505798577917-a65157d3320a?q=80&w=2070&auto=format&fit=crop')">
+                    </div>
                 </div>
-                <!-- Review 3 -->
-                <div class="bg-white p-8 rounded-lg shadow-md border border-outline-variant">
-                    <div class="flex text-brand-orange mb-4">
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star_half</span>
+                <!-- Slide 3 (Unsplash Placeholder) -->
+                <div class="hero-slide absolute inset-0 opacity-0">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-primary-container/90 via-primary-container/60 to-transparent z-10">
                     </div>
-                    <p class="text-on-surface-variant font-body-md italic mb-6">"Very professional electrical work. I felt safe knowing they were fully licensed and bonded. Will call them again."</p>
-                    <div class="font-label-md text-primary font-bold">- Emily Davis</div>
+                    <div class="w-full h-full bg-cover bg-center"
+                        style="background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop')">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section id="stats" class="bg-primary-container text-on-primary py-stack-md">
-        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            <div>
-                <div class="font-headline-lg text-headline-lg text-brand-orange">15k+</div>
-                <p class="font-label-md text-label-md text-primary-fixed">Projects Completed</p>
-            </div>
-            <div>
-                <div class="font-headline-lg text-headline-lg text-brand-orange">98%</div>
-                <p class="font-label-md text-label-md text-primary-fixed">Happy Clients</p>
-            </div>
-            <div>
-                <div class="font-headline-lg text-headline-lg text-brand-orange">24h</div>
-                <p class="font-label-md text-label-md text-primary-fixed">Response Time</p>
-            </div>
-            <div>
-                <div class="font-headline-lg text-headline-lg text-brand-orange">Fully</div>
-                <p class="font-label-md text-label-md text-primary-fixed">Insured &amp; Bonded</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="quote-form" class="py-stack-lg bg-surface">
-        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-            <div class="flex flex-col lg:flex-row gap-16">
-                <!-- Contact Info -->
-                <div class="lg:w-5/12">
-                    <h2 class="font-headline-lg text-headline-lg text-primary mb-6">Get Your Free Estimate</h2>
-                    <p class="font-body-lg text-body-lg text-on-surface-variant mb-12">
-                        Ready to restore your home's perfection? Fill out the form or reach out directly. Our elite team is standing by to assist with your maintenance needs.
+            <!-- Hero Content -->
+            <div class="absolute inset-0 flex items-center justify-center pt-16 hero-content-wrapper">
+                <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full">
+                    <div
+                        class="bg-on-tertiary-container/10 border border-on-tertiary-container/30 px-4 py-1 mb-6 inline-block">
+                        <span
+                            class="text-on-tertiary-container font-label-md text-label-md uppercase tracking-widest text-brand-orange">Premium
+                            Service</span>
+                    </div>
+                    <h1 class="font-headline-xl text-headline-xl text-white mb-6 max-w-3xl hero-title">
+                        Elite Craftsmanship for Your Home Repairs
+                    </h1>
+                    <p class="font-body-lg text-body-lg text-white/90 mb-10 max-w-2xl hero-desc">
+                        Professional, reliable, and insured handyman services tailored for homeowners in the USA. We
+                        bring precision to every task, from small repairs to custom installations.
                     </p>
-                    <div class="space-y-8">
-                        <div class="flex items-start gap-4">
-                            <div class="bg-primary-container p-3 rounded-full text-white">
-                                <span class="material-symbols-outlined">call</span>
+                </div>
+            </div>
+            <!-- Carousel Controls -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-3" id="hero-dots">
+                <button class="w-3 h-3 rounded-full bg-white transition-all opacity-100" data-slide="0"></button>
+                <button class="w-3 h-3 rounded-full bg-white transition-all opacity-40" data-slide="1"></button>
+                <button class="w-3 h-3 rounded-full bg-white transition-all opacity-40" data-slide="2"></button>
+            </div>
+            <button
+                class="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur-sm transition-all"
+                id="hero-prev">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <button
+                class="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur-sm transition-all"
+                id="hero-next">
+                <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+        </section>
+
+        <!-- 3. Services Slider Section -->
+        <section id="services" class="py-stack-lg bg-surface-container-low overflow-hidden">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative">
+                <div class="text-center mb-16">
+                    <h2 class="font-headline-lg text-headline-lg text-primary-container mb-4">Our Expert Services</h2>
+                    <div class="w-20 h-1.5 bg-brand-orange mx-auto rounded-full"></div>
+                </div>
+                <!-- Navigation Arrows for Desktop -->
+                <div class="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-8 z-10 hidden sm:block">
+                    <button
+                        class="w-12 h-12 bg-white rounded-full flex items-center justify-center border border-outline-variant hover:bg-brand-orange hover:text-white transition-all shadow-md"
+                        id="prevBtn">
+                        <span class="material-symbols-outlined">chevron_left</span>
+                    </button>
+                </div>
+                <div class="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-8 z-10 hidden sm:block">
+                    <button
+                        class="w-12 h-12 bg-white rounded-full flex items-center justify-center border border-outline-variant hover:bg-brand-orange hover:text-white transition-all shadow-md"
+                        id="nextBtn">
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </button>
+                </div>
+                <!-- Horizontally Scrollable Container -->
+                <div class="flex gap-gutter overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth pb-8"
+                    id="services-slider">
+                    <!-- Plumbing -->
+                    <div class="min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(25%-18px)] snap-center">
+                        <div
+                            class="bg-white p-8 border border-outline-variant hover:border-brand-orange transition-colors group h-full">
+                            <div
+                                class="w-16 h-16 bg-surface-container flex items-center justify-center rounded-xl mb-6 group-hover:bg-brand-orange/10 transition-colors">
+                                <span
+                                    class="material-symbols-outlined text-4xl text-primary-container group-hover:text-brand-orange"
+                                    style="font-variation-settings: 'FILL' 1;">plumbing</span>
                             </div>
-                            <div>
-                                <h4 class="font-label-md text-label-md text-primary">Phone</h4>
-                                <p class="text-body-md">(800) 555-ELITE</p>
-                            </div>
+                            <h3 class="font-headline-md text-headline-md text-primary mb-3">Plumbing</h3>
+                            <p class="text-on-surface-variant font-body-md">Leaks, faucets, and pipe repairs handled
+                                with architectural precision to ensure longevity.</p>
                         </div>
-                        <div class="flex items-start gap-4">
-                            <div class="bg-primary-container p-3 rounded-full text-white">
-                                <span class="material-symbols-outlined">mail</span>
+                    </div>
+                    <!-- Electrical -->
+                    <div class="min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(25%-18px)] snap-center">
+                        <div
+                            class="bg-white p-8 border border-outline-variant hover:border-brand-orange transition-colors group h-full">
+                            <div
+                                class="w-16 h-16 bg-surface-container flex items-center justify-center rounded-xl mb-6 group-hover:bg-brand-orange/10 transition-colors">
+                                <span
+                                    class="material-symbols-outlined text-4xl text-primary-container group-hover:text-brand-orange"
+                                    style="font-variation-settings: 'FILL' 1;">electrical_services</span>
                             </div>
-                            <div>
-                                <h4 class="font-label-md text-label-md text-primary">Email</h4>
-                                <p class="text-body-md">service@elitecrafthandyman.com</p>
-                            </div>
+                            <h3 class="font-headline-md text-headline-md text-primary mb-3">Electrical</h3>
+                            <p class="text-on-surface-variant font-body-md">Outlets, lighting installations, and small
+                                repairs executed following strict safety standards.</p>
                         </div>
-                        <div class="flex items-start gap-4">
-                            <div class="bg-primary-container p-3 rounded-full text-white">
-                                <span class="material-symbols-outlined">schedule</span>
+                    </div>
+                    <!-- Carpentry -->
+                    <div class="min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(25%-18px)] snap-center">
+                        <div
+                            class="bg-white p-8 border border-outline-variant hover:border-brand-orange transition-colors group h-full">
+                            <div
+                                class="w-16 h-16 bg-surface-container flex items-center justify-center rounded-xl mb-6 group-hover:bg-brand-orange/10 transition-colors">
+                                <span
+                                    class="material-symbols-outlined text-4xl text-primary-container group-hover:text-brand-orange"
+                                    style="font-variation-settings: 'FILL' 1;">carpenter</span>
                             </div>
-                            <div>
-                                <h4 class="font-label-md text-label-md text-primary">Service Hours</h4>
-                                <p class="text-body-md">Mon - Fri: 8:00 AM - 6:00 PM<br/>Sat: 9:00 AM - 2:00 PM</p>
+                            <h3 class="font-headline-md text-headline-md text-primary mb-3">Carpentry</h3>
+                            <p class="text-on-surface-variant font-body-md">Custom shelving, door repairs, and detailed
+                                trim work for a refined home aesthetic.</p>
+                        </div>
+                    </div>
+                    <!-- General Repairs -->
+                    <div class="min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(25%-18px)] snap-center">
+                        <div
+                            class="bg-white p-8 border border-outline-variant hover:border-brand-orange transition-colors group h-full">
+                            <div
+                                class="w-16 h-16 bg-surface-container flex items-center justify-center rounded-xl mb-6 group-hover:bg-brand-orange/10 transition-colors">
+                                <span
+                                    class="material-symbols-outlined text-4xl text-primary-container group-hover:text-brand-orange"
+                                    style="font-variation-settings: 'FILL' 1;">build</span>
                             </div>
+                            <h3 class="font-headline-md text-headline-md text-primary mb-3">General Repairs</h3>
+                            <p class="text-on-surface-variant font-body-md">Expert drywall repair, painting, and general
+                                maintenance for a perfectly kept property.</p>
+                        </div>
+                    </div>
+                    <!-- HVAC Maintenance -->
+                    <div class="min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(25%-18px)] snap-center">
+                        <div
+                            class="bg-white p-8 border border-outline-variant hover:border-brand-orange transition-colors group h-full">
+                            <div
+                                class="w-16 h-16 bg-surface-container flex items-center justify-center rounded-xl mb-6 group-hover:bg-brand-orange/10 transition-colors">
+                                <span
+                                    class="material-symbols-outlined text-4xl text-primary-container group-hover:text-brand-orange"
+                                    style="font-variation-settings: 'FILL' 1;">ac_unit</span>
+                            </div>
+                            <h3 class="font-headline-md text-headline-md text-primary mb-3">HVAC Tune-up</h3>
+                            <p class="text-on-surface-variant font-body-md">Seasonal filter changes and maintenance to
+                                ensure your climate control stays elite.</p>
+                        </div>
+                    </div>
+                    <!-- Painting -->
+                    <div class="min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(25%-18px)] snap-center">
+                        <div
+                            class="bg-white p-8 border border-outline-variant hover:border-brand-orange transition-colors group h-full">
+                            <div
+                                class="w-16 h-16 bg-surface-container flex items-center justify-center rounded-xl mb-6 group-hover:bg-brand-orange/10 transition-colors">
+                                <span
+                                    class="material-symbols-outlined text-4xl text-primary-container group-hover:text-brand-orange"
+                                    style="font-variation-settings: 'FILL' 1;">format_paint</span>
+                            </div>
+                            <h3 class="font-headline-md text-headline-md text-primary mb-3">Interior Painting</h3>
+                            <p class="text-on-surface-variant font-body-md">Professional finish for rooms and trim with
+                                high-quality paint and clean edges.</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Contact Form -->
-                <div class="lg:w-7/12 bg-white p-8 md:p-12 shadow-2xl rounded-sm border border-outline-variant">
-                    <form class="space-y-6" id="quote-form" onsubmit="enviarLeadCrm(event)">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="flex flex-col gap-2">
-                                <label class="font-label-md text-label-md text-on-surface">Name</label>
-                                <input id="nombre" required class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest" placeholder="Your Full Name" type="text"/>
-                            </div>
-                            <div class="flex flex-col gap-2">
-                                <label class="font-label-md text-label-md text-on-surface">Phone</label>
-                                <input id="telefono" required type="tel" maxlength="10" pattern="[0-9]{10}" class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest" placeholder="Ej. 6641234567" />
-                                <p class="phone-help-text italic">10 dígitos sin espacios ni guiones.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="flex flex-col gap-2">
-                                <label class="font-label-md text-label-md text-on-surface">Email</label>
-                                <input id="email" required pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest" placeholder="email@address.com" type="email"/>
-                            </div>
-                            <div class="flex flex-col gap-2">
-                                <label class="font-label-md text-label-md text-on-surface">Zip Code</label>
-                                <input id="codigo_postal" required pattern="^(\d{5})(-\d{4})?$" class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest" placeholder="Ej. 30301 o 22710" type="text"/>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-                            <label class="font-label-md text-label-md text-on-surface">Preferred Contact Method</label>
-                            <select id="metodo_contacto" required class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest">
-                                <option disabled selected value="">Select Contact Method</option>
-                                <option value="whatsapp">WhatsApp</option>
-                                <option value="phone">Phone call</option>
-                            </select>
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            <label class="font-label-md text-label-md text-on-surface">Service Needed</label>
-                            <select id="servicio" required class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest">
-                                <option disabled selected value="">Select a Service</option>
-                                <option value="Plumbing">Plumbing</option>
-                                <option value="Electrical">Electrical</option>
-                                <option value="Carpentry">Carpentry</option>
-                                <option value="General Repairs">General Repairs</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            <label class="font-label-md text-label-md text-on-surface">Project Details</label>
-                            <textarea id="detalles" required minlength="5" class="p-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest" placeholder="Briefly describe what you need help with..." rows="4"></textarea>
-                        </div>
-                        <button id="submit-btn" class="w-full bg-brand-orange text-white py-5 font-button text-button rounded-sm hover:brightness-110 transition-all shadow-md" type="submit">
-                            Submit Request
-                        </button>
-                    </form>
+        <!-- Expertise (Gallery) Section -->
+        <section id="expertise" class="py-stack-lg bg-surface">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                <div class="text-center mb-16">
+                    <h2 class="font-headline-lg text-headline-lg text-primary-container mb-4">Our Portfolio</h2>
+                    <div class="w-20 h-1.5 bg-brand-orange mx-auto rounded-full"></div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Gallery Item 1 -->
+                    <div class="h-64 bg-cover bg-center rounded-lg shadow-md hover:shadow-xl transition-shadow"
+                        style="background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=2069&auto=format&fit=crop');">
+                    </div>
+                    <!-- Gallery Item 2 -->
+                    <div class="h-64 bg-cover bg-center rounded-lg shadow-md hover:shadow-xl transition-shadow"
+                        style="background-image: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070&auto=format&fit=crop');">
+                    </div>
+                    <!-- Gallery Item 3 -->
+                    <div class="h-64 bg-cover bg-center rounded-lg shadow-md hover:shadow-xl transition-shadow"
+                        style="background-image: url('https://images.unsplash.com/photo-1542013936693-884638332954?q=80&w=2070&auto=format&fit=crop');">
+                    </div>
+                    <!-- Gallery Item 4 -->
+                    <div class="h-64 bg-cover bg-center rounded-lg shadow-md hover:shadow-xl transition-shadow"
+                        style="background-image: url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop');">
+                    </div>
+                    <!-- Gallery Item 5 -->
+                    <div class="h-64 bg-cover bg-center rounded-lg shadow-md hover:shadow-xl transition-shadow"
+                        style="background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop');">
+                    </div>
+                    <!-- Gallery Item 6 -->
+                    <div class="h-64 bg-cover bg-center rounded-lg shadow-md hover:shadow-xl transition-shadow"
+                        style="background-image: url('https://images.unsplash.com/photo-1505798577917-a65157d3320a?q=80&w=2070&auto=format&fit=crop');">
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section id="reviews" class="py-stack-lg bg-surface-container-low">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                <div class="text-center mb-16">
+                    <h2 class="font-headline-lg text-headline-lg text-primary-container mb-4">Client Reviews</h2>
+                    <div class="w-20 h-1.5 bg-brand-orange mx-auto rounded-full"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Review 1 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md border border-outline-variant">
+                        <div class="flex text-brand-orange mb-4">
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                        <p class="text-on-surface-variant font-body-md italic mb-6">"Exceptional service! They arrived
+                            on time, fixed my plumbing issue perfectly, and left the place spotless. Highly
+                            recommended."</p>
+                        <div class="font-label-md text-primary font-bold">- Sarah Jenkins</div>
+                    </div>
+                    <!-- Review 2 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md border border-outline-variant">
+                        <div class="flex text-brand-orange mb-4">
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                        <p class="text-on-surface-variant font-body-md italic mb-6">"EliteCraft completely transformed
+                            our old deck. The carpentry work is top-notch and the price was very reasonable."</p>
+                        <div class="font-label-md text-primary font-bold">- Mark T.</div>
+                    </div>
+                    <!-- Review 3 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md border border-outline-variant">
+                        <div class="flex text-brand-orange mb-4">
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">star_half</span>
+                        </div>
+                        <p class="text-on-surface-variant font-body-md italic mb-6">"Very professional electrical work.
+                            I felt safe knowing they were fully licensed and bonded. Will call them again."</p>
+                        <div class="font-label-md text-primary font-bold">- Emily Davis</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section id="stats" class="bg-primary-container text-on-primary py-stack-md">
+            <div
+                class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="font-headline-lg text-headline-lg text-brand-orange">15k+</div>
+                    <p class="font-label-md text-label-md text-primary-fixed">Projects Completed</p>
+                </div>
+                <div>
+                    <div class="font-headline-lg text-headline-lg text-brand-orange">98%</div>
+                    <p class="font-label-md text-label-md text-primary-fixed">Happy Clients</p>
+                </div>
+                <div>
+                    <div class="font-headline-lg text-headline-lg text-brand-orange">24h</div>
+                    <p class="font-label-md text-label-md text-primary-fixed">Response Time</p>
+                </div>
+                <div>
+                    <div class="font-headline-lg text-headline-lg text-brand-orange">Fully</div>
+                    <p class="font-label-md text-label-md text-primary-fixed">Insured &amp; Bonded</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact-section" class="py-stack-lg bg-surface">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                <div class="flex flex-col lg:flex-row gap-16">
+                    <!-- Contact Info -->
+                    <div class="lg:w-5/12">
+                        <h2 class="font-headline-lg text-headline-lg text-primary mb-6">Get Your Free Estimate</h2>
+                        <p class="font-body-lg text-body-lg text-on-surface-variant mb-12">
+                            Ready to restore your home's perfection? Fill out the form or reach out directly. Our elite
+                            team is standing by to assist with your maintenance needs.
+                        </p>
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-4">
+                                <div class="bg-primary-container p-3 rounded-full text-white">
+                                    <span class="material-symbols-outlined">call</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-label-md text-label-md text-primary">Phone</h4>
+                                    <p class="text-body-md">(800) 555-ELITE</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-primary-container p-3 rounded-full text-white">
+                                    <span class="material-symbols-outlined">mail</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-label-md text-label-md text-primary">Email</h4>
+                                    <p class="text-body-md">service@elitecrafthandyman.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-primary-container p-3 rounded-full text-white">
+                                    <span class="material-symbols-outlined">schedule</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-label-md text-label-md text-primary">Service Hours</h4>
+                                    <p class="text-body-md">Mon - Fri: 8:00 AM - 6:00 PM<br />Sat: 9:00 AM - 2:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="lg:w-7/12 bg-white p-8 md:p-12 shadow-2xl rounded-sm border border-outline-variant">
+                        <form class="space-y-6" id="quote-form">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="flex flex-col gap-2">
+                                    <label class="font-label-md text-label-md text-on-surface">Name</label>
+                                    <input id="nombre" required
+                                        class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest"
+                                        placeholder="Your Full Name" type="text" />
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <label class="font-label-md text-label-md text-on-surface">Phone</label>
+                                    <input id="telefono" required type="tel" maxlength="10" pattern="[0-9]{10}"
+                                        class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest"
+                                        placeholder="Ej. 6641234567" />
+                                    <p class="phone-help-text italic">10 dígitos sin espacios ni guiones.</p>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="flex flex-col gap-2">
+                                    <label class="font-label-md text-label-md text-on-surface">Email</label>
+                                    <input id="email" required
+                                        pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
+                                        class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest"
+                                        placeholder="email@address.com" type="email" />
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <label class="font-label-md text-label-md text-on-surface">Zip Code</label>
+                                    <input id="codigo_postal" required pattern="^(\d{5})(-\d{4})?$"
+                                        class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest"
+                                        placeholder="Ej. 30301 o 22710" type="text" />
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-2">
+                                <label class="font-label-md text-label-md text-on-surface">Preferred Contact
+                                    Method</label>
+                                <select id="metodo_contacto" required
+                                    class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest">
+                                    <option disabled selected value="">Select Contact Method</option>
+                                    <option value="whatsapp">WhatsApp</option>
+                                    <option value="phone">Phone call</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label class="font-label-md text-label-md text-on-surface">Service Needed</label>
+                                <select id="servicio" required
+                                    class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest">
+                                    <option disabled selected value="">Select a Service</option>
+                                    <option value="Plumbing">Plumbing</option>
+                                    <option value="Electrical">Electrical</option>
+                                    <option value="Carpentry">Carpentry</option>
+                                    <option value="General Repairs">General Repairs</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label class="font-label-md text-label-md text-on-surface">Project Details</label>
+                                <textarea id="detalles" required minlength="5"
+                                    class="p-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest"
+                                    placeholder="Briefly describe what you need help with..." rows="4"></textarea>
+                            </div>
+                            <button id="submit-btn" type="button"
+                                class="w-full bg-brand-orange text-white py-5 font-button text-button rounded-sm hover:brightness-110 transition-all shadow-md">
+                                Submit Request
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="w-full mt-stack-lg bg-primary">
+        <div
+            class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-md max-w-container-max mx-auto">
+            <div class="flex flex-col gap-2 items-center md:items-start mb-8 md:mb-0">
+                <div class="font-headline-md text-headline-md font-bold text-on-primary">EliteCraft Handyman</div>
+                <p class="font-label-md text-label-md text-on-primary-fixed-variant text-center md:text-left">© 2026
+                    EliteCraft Handyman Services. All rights reserved.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8 font-label-md text-label-md">
+                <a class="text-on-primary-fixed-variant hover:text-tertiary-fixed transition-colors" href="#">Privacy
+                    Policy</a>
+                <a class="text-on-primary-fixed-variant hover:text-tertiary-fixed transition-colors" href="#">Terms of
+                    Service</a>
+                <a class="text-on-primary-fixed-variant hover:text-tertiary-fixed transition-colors" href="#">FAQ</a>
+                <a class="text-on-primary-fixed-variant hover:text-tertiary-fixed transition-colors"
+                    href="#">Careers</a>
+            </div>
+            <div class="flex gap-4 mt-8 md:mt-0">
+                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-orange transition-colors"
+                    href="#">
+                    <span class="material-symbols-outlined text-white text-xl">share</span>
+                </a>
+                <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-orange transition-colors"
+                    href="#">
+                    <span class="material-symbols-outlined text-white text-xl">public</span>
+                </a>
+            </div>
         </div>
-    </section>
-</main>
+    </footer>
 
-<footer class="w-full mt-stack-lg bg-primary">
-    <div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-md max-w-container-max mx-auto">
-        <div class="flex flex-col gap-2 items-center md:items-start mb-8 md:mb-0">
-            <div class="font-headline-md text-headline-md font-bold text-on-primary">EliteCraft Handyman</div>
-            <p class="font-label-md text-label-md text-on-primary-fixed-variant text-center md:text-left">© 2026 EliteCraft Handyman Services. All rights reserved.</p>
-        </div>
-        <div class="flex flex-wrap justify-center gap-8 font-label-md text-label-md">
-            <a class="text-on-primary-fixed-variant hover:text-tertiary-fixed transition-colors" href="#">Privacy Policy</a>
-            <a class="text-on-primary-fixed-variant hover:text-tertiary-fixed transition-colors" href="#">Terms of Service</a>
-            <a class="text-on-primary-fixed-variant hover:text-tertiary-fixed transition-colors" href="#">FAQ</a>
-            <a class="text-on-primary-fixed-variant hover:text-tertiary-fixed transition-colors" href="#">Careers</a>
-        </div>
-        <div class="flex gap-4 mt-8 md:mt-0">
-            <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-orange transition-colors" href="#">
-                <span class="material-symbols-outlined text-white text-xl">share</span>
-            </a>
-            <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-orange transition-colors" href="#">
-                <span class="material-symbols-outlined text-white text-xl">public</span>
-            </a>
-        </div>
-    </div>
-</footer>
+    <script>
+        // Hero Carousel Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('#hero-dots button');
+        const totalSlides = slides.length;
 
-<script>
-    // Hero Carousel Logic
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.hero-slide');
-    const dots = document.querySelectorAll('#hero-dots button');
-    const totalSlides = slides.length;
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.opacity = i === index ? '1' : '0';
+            });
+            dots.forEach((dot, i) => {
+                dot.style.opacity = i === index ? '1' : '0.4';
+            });
+            currentSlide = index;
+        }
 
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.style.opacity = i === index ? '1' : '0';
-        });
-        dots.forEach((dot, i) => {
-            dot.style.opacity = i === index ? '1' : '0.4';
-        });
-        currentSlide = index;
-    }
-
-    document.getElementById('hero-next').addEventListener('click', () => {
-        let next = (currentSlide + 1) % totalSlides;
-        showSlide(next);
-    });
-
-    document.getElementById('hero-prev').addEventListener('click', () => {
-        let prev = (currentSlide - 1 + totalSlides) % totalSlides;
-        showSlide(prev);
-    });
-
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            showSlide(parseInt(dot.dataset.slide));
-        });
-    });
-
-    // Auto-advance hero
-    setInterval(() => {
-        let next = (currentSlide + 1) % totalSlides;
-        showSlide(next);
-    }, 5000);
-
-    // Services Slider Logic
-    const slider = document.getElementById('services-slider');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-
-    if (slider && prevBtn && nextBtn) {
-        const getScrollAmount = () => {
-            const cardWidth = slider.firstElementChild.offsetWidth;
-            const gap = 24; 
-            return cardWidth + gap;
-        };
-
-        nextBtn.addEventListener('click', () => {
-            slider.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+        document.getElementById('hero-next').addEventListener('click', () => {
+            let next = (currentSlide + 1) % totalSlides;
+            showSlide(next);
         });
 
-        prevBtn.addEventListener('click', () => {
-            slider.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+        document.getElementById('hero-prev').addEventListener('click', () => {
+            let prev = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(prev);
         });
 
-        const toggleArrows = () => {
-            const isAtStart = slider.scrollLeft <= 10;
-            const isAtEnd = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10;
-            prevBtn.style.opacity = isAtStart ? '0.3' : '1';
-            prevBtn.style.pointerEvents = isAtStart ? 'none' : 'auto';
-            nextBtn.style.opacity = isAtEnd ? '0.3' : '1';
-            nextBtn.style.pointerEvents = isAtEnd ? 'none' : 'auto';
-        };
-
-        slider.addEventListener('scroll', toggleArrows);
-        window.addEventListener('resize', toggleArrows);
-        toggleArrows();
-    }
-
-    // Intersection Observer for Animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('opacity-100', 'translate-y-0');
-                entry.target.classList.remove('opacity-0', 'translate-y-10');
-            }
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                showSlide(parseInt(dot.dataset.slide));
+            });
         });
-    }, { threshold: 0.1 });
 
-    document.querySelectorAll('section > div > div:first-child').forEach(el => {
-        if (!el.parentElement.parentElement.id) return; // Only apply to main sections if needed
-        el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
-        observer.observe(el);
-    });
+        // Auto-advance hero
+        setInterval(() => {
+            let next = (currentSlide + 1) % totalSlides;
+            showSlide(next);
+        }, 5000);
 
-    // Dynamic Navigation Active State Observer
-    const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
-    const pageSections = document.querySelectorAll('section[id]');
-    
-    const activeNavObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const currentId = entry.target.getAttribute('id');
-                
-                navLinks.forEach(link => {
-                    link.classList.remove('active-link');
-                    // Add text-brand-orange to mobile links for active state if needed, or active-link handles it
-                    if (link.getAttribute('href') === `#${currentId}`) {
-                        link.classList.add('active-link');
-                    }
-                });
-            }
+        // Services Slider Logic
+        const slider = document.getElementById('services-slider');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        if (slider && prevBtn && nextBtn) {
+            const getScrollAmount = () => {
+                const cardWidth = slider.firstElementChild.offsetWidth;
+                const gap = 24;
+                return cardWidth + gap;
+            };
+
+            nextBtn.addEventListener('click', () => {
+                slider.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+            });
+
+            prevBtn.addEventListener('click', () => {
+                slider.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+            });
+
+            const toggleArrows = () => {
+                const isAtStart = slider.scrollLeft <= 10;
+                const isAtEnd = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10;
+                prevBtn.style.opacity = isAtStart ? '0.3' : '1';
+                prevBtn.style.pointerEvents = isAtStart ? 'none' : 'auto';
+                nextBtn.style.opacity = isAtEnd ? '0.3' : '1';
+                nextBtn.style.pointerEvents = isAtEnd ? 'none' : 'auto';
+            };
+
+            slider.addEventListener('scroll', toggleArrows);
+            window.addEventListener('resize', toggleArrows);
+            toggleArrows();
+        }
+
+        // Intersection Observer for Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section > div > div:first-child').forEach(el => {
+            if (!el.parentElement.parentElement.id) return; // Only apply to main sections if needed
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
         });
-    }, {
-        rootMargin: '-100px 0px -40% 0px' 
-    });
 
-    pageSections.forEach(section => {
-        activeNavObserver.observe(section);
-    });
+        // Dynamic Navigation Active State Observer
+        const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+        const pageSections = document.querySelectorAll('section[id]');
 
-    // Mobile Menu Toggle Logic
-    const menuToggle = document.getElementById('mobile-menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
+        const activeNavObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const currentId = entry.target.getAttribute('id');
 
-    if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener('click', () => {
-            const isHidden = mobileMenu.classList.contains('hidden');
-            if (isHidden) {
-                mobileMenu.classList.remove('hidden');
-                mobileMenu.classList.add('flex');
-                menuToggle.querySelector('span').textContent = 'close';
-            } else {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active-link');
+                        // Add text-brand-orange to mobile links for active state if needed, or active-link handles it
+                        if (link.getAttribute('href') === `#${currentId}`) {
+                            link.classList.add('active-link');
+                        }
+                    });
+                }
+            });
+        }, {
+            rootMargin: '-100px 0px -40% 0px'
+        });
+
+        pageSections.forEach(section => {
+            activeNavObserver.observe(section);
+        });
+
+        // Mobile Menu Toggle Logic
+        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.contains('hidden');
+                if (isHidden) {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenu.classList.add('flex');
+                    menuToggle.querySelector('span').textContent = 'close';
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                    menuToggle.querySelector('span').textContent = 'menu';
+                }
+            });
+        }
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-nav-link, #mobile-menu a').forEach(anchor => {
+            anchor.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
                 mobileMenu.classList.remove('flex');
-                menuToggle.querySelector('span').textContent = 'menu';
-            }
-        });
-    }
-
-    // Close mobile menu on link click
-    document.querySelectorAll('.mobile-nav-link, #mobile-menu a').forEach(anchor => {
-        anchor.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            mobileMenu.classList.remove('flex');
-            if(menuToggle) menuToggle.querySelector('span').textContent = 'menu';
-        });
-    });
-
-    // Form Validation Logic
-    const quoteForm = document.getElementById('quote-form');
-    const inputs = document.querySelectorAll('#quote-form input, #quote-form select, #quote-form textarea');
-
-    inputs.forEach(input => {
-        // Al salir del campo (TAB o click afuera)
-        input.addEventListener('blur', () => {
-            if (!input.checkValidity()) {
-                input.classList.add('is-invalid');
-            } else {
-                input.classList.remove('is-invalid');
-            }
+                if (menuToggle) menuToggle.querySelector('span').textContent = 'menu';
+            });
         });
 
-        // Al escribir para remover el rojo si ya corrigió el error
-        input.addEventListener('input', () => {
-            if (input.checkValidity()) {
-                input.classList.remove('is-invalid');
-            }
+        // Form Validation Logic
+        const quoteForm = document.getElementById('quote-form');
+        const inputs = document.querySelectorAll('#quote-form input, #quote-form select, #quote-form textarea');
+
+        inputs.forEach(input => {
+            // Al salir del campo (TAB o click afuera)
+            input.addEventListener('blur', () => {
+                if (!input.checkValidity()) {
+                    input.classList.add('is-invalid');
+                } else {
+                    input.classList.remove('is-invalid');
+                }
+            });
+
+            // Al escribir para remover el rojo si ya corrigió el error
+            input.addEventListener('input', () => {
+                if (input.checkValidity()) {
+                    input.classList.remove('is-invalid');
+                }
+            });
         });
-    });
-</script>
+    </script>
 
-<!-- Vinculación del script para enviar leads a la API -->
-<script src="conexion_frontend.js"></script>
+    <!-- Vinculación del script para enviar leads a la API -->
+    <script src="conexion_frontend.js?v=1005"></script>
 
-<!-- Botón Flotante de WhatsApp -->
-<a href="https://wa.me/1234567890" class="fixed bottom-5 right-5 z-[9999] bg-[#25D366] text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg hover:scale-110 transition-transform" target="_blank" rel="noopener noreferrer">
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
-        <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-    </svg>
-</a>
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/1234567890"
+        class="fixed bottom-5 right-5 z-[9999] bg-[#25D366] text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+        target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+            <path
+                d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
+        </svg>
+    </a>
 
 </body>
+
 </html>

@@ -141,21 +141,22 @@ async def send_client_confirmation(to_phone: str, customer_name: str):
         "to": formatted_client_phone,
         "type": "template",
         "template": {
-            "name": "confirmacion_spanish",
+            "name": "hello_world",
             "language": {
-                "code": "es_MX"
-            },
-            "components": [
-                {
-                    "type": "body",
-                    "parameters": [
-                        {
-                            "type": "text",
-                            "text": str(customer_name)
-                        }
-                    ]
-                }
-            ]
+                "code": "en_US"
+            }
+            # Se comentan los componentes porque hello_world no acepta variables
+            # "components": [
+            #     {
+            #         "type": "body",
+            #         "parameters": [
+            #             {
+            #                 "type": "text",
+            #                 "text": str(customer_name)
+            #             }
+            #         ]
+            #     }
+            # ]
         }
     }
     
