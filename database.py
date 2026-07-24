@@ -22,9 +22,29 @@ def inicializar_base_de_datos():
         professional_type TEXT NOT NULL,
         email TEXT UNIQUE NOT NULL,
         password_hash TEXT NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        role_level INTEGER DEFAULT 3,
+        must_change_password BOOLEAN DEFAULT 1,
+        created_by_id INTEGER,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (created_by_id) REFERENCES users(id)
     );
     """)
+    
+    # Migraciones para la tabla users (nuevos campos)
+    try:
+        cursor.execute("ALTER TABLE users ADD COLUMN role_level INTEGER DEFAULT 3;")
+    except sqlite3.OperationalError:
+        pass
+        
+    try:
+        cursor.execute("ALTER TABLE users ADD COLUMN must_change_password BOOLEAN DEFAULT 1;")
+    except sqlite3.OperationalError:
+        pass
+        
+    try:
+        cursor.execute("ALTER TABLE users ADD COLUMN created_by_id INTEGER;")
+    except sqlite3.OperationalError:
+        pass
     
     # 2. Tabla de Leads (Web, WhatsApp y Llamadas)
     cursor.execute("""
@@ -63,6 +83,42 @@ def inicializar_base_de_datos():
         note_text TEXT NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (lead_id) REFERENCES leads(id) ON DELETE CASCADE
+    );
+    """)
+    
+    # 4. Tabla de Solicitudes de Recuperación de Contraseña
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS password_reset_requests (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id INTEGER NOT NULL,
+        status TEXT CHECK(status IN ('PENDING', 'ASSIGNED', 'RESOLVED', 'REJECTED')) DEFAULT 'PENDING',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    );
+    """)
+
+    # 5. Tabla de Permisos de Acceso de Soporte (SuperAdmin a cuenta de usuario)
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS support_access_grants (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id INTEGER NOT NULL,
+        granted_by_id INTEGER NOT NULL,
+        is_active BOOLEAN DEFAULT 1,
+        expires_at TIMESTAMP NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+        FOREIGN KEY (granted_by_id) REFERENCES users(id)
+    );
+    """)
+
+    # 6. Tabla de Métricas del Sistema (Totales)
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS system_metrics (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        date DATE UNIQUE NOT NULL,
+        total_leads INTEGER DEFAULT 0,
+        ai_interactions INTEGER DEFAULT 0,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
     """)
     

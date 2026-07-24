@@ -1,12 +1,18 @@
 import os
-from fastapi import FastAPI, HTTPException
+import json
+from fastapi import FastAPI, HTTPException, Request, Response, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import Optional
 import crud
 from database import inicializar_base_de_datos
-from services.whatsapp import enviar_alerta_nuevo_lead, send_client_confirmation
+from services.whatsapp import (
+    enviar_alerta_nuevo_lead,
+    send_client_confirmation,
+    generar_respuesta_ia,
+    send_whatsapp_message
+)
 
 app = FastAPI(title="Handyman CRM API")
 
@@ -88,3 +94,67 @@ async def recibir_lead_web(lead: LeadWeb):
         
     # Responder SIEMPRE con éxito al frontend si el lead se guardó en BD
     return {"status": "success", "message": "Lead registrado exitosamente", "lead_id": lead_id}
+
+@app.get("/api/whatsapp/webhook")
+async def verify_webhook(request: Request):
+    params = request.query_params
+    mode = params.get("hub.mode")
+    token = params.get("hub.verify_token")
+    challenge = params.get("hub.challenge")
+
+    if mode == "subscribe" and token == "handyman_secret_token_2026":
+        print("✅ Webhook de WhatsApp verificado con éxito por Meta.")
+        return Response(content=challenge, media_type="text/plain")
+    
+    raise HTTPException(status_code=403, detail="Verification failed")
+
+async def procesar_y_responder_whatsapp(wa_id: str, user_message: str):
+    print("2. Generando respuesta de IA...")
+    ai_response_text = await generar_respuesta_ia(user_message)
+    
+    # Registrar interacción IA para las métricas del dashboard
+    crud.log_ai_interaction()
+    
+    print("3. Intentando enviar a Meta Graph para el número:", wa_id)
+    await send_whatsapp_message(to_phone=wa_id, message=ai_response_text)
+
+@app.post("/api/whatsapp/webhook")
+async def receive_whatsapp_message(request: Request, background_tasks: BackgroundTasks):
+    try:
+        raw_body = await request.body()
+        body_str = raw_body.decode("utf-8", errors="replace")
+        body = json.loads(body_str)
+        print("📩 Mensaje recibido de WhatsApp:", body)
+        
+        # 1. Extraer wa_id y user_message
+        entry = body.get("entry", [])[0]
+        changes = entry.get("changes", [])[0]
+        value = changes.get("value", {})
+        
+        if "messages" in value:
+            message_info = value["messages"][0]
+            wa_id = message_info.get("from")
+            
+            if message_info.get("type") == "text":
+                user_message = message_info["text"]["body"]
+                print("1. Procesando texto entrante:", user_message)
+                
+                # Delegar a una tarea en segundo plano para evitar timeouts 524
+                background_tasks.add_task(procesar_y_responder_whatsapp, wa_id, user_message)
+                
+    except Exception as e:
+        print(f"❌ Error procesando el webhook de WhatsApp: {e}")
+
+    return {"status": "ok"}
+
+@app.get("/api/admin/dashboard/stats")
+def dashboard_stats():
+    """Retorna las estadísticas para el dashboard principal."""
+    stats = crud.get_dashboard_stats()
+    return stats
+
+@app.get("/api/admin/dashboard/activity")
+def dashboard_activity():
+    """Retorna la actividad reciente para el dashboard."""
+    activity = crud.get_recent_activity()
+    return activity

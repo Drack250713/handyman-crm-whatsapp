@@ -28,7 +28,7 @@ async function enviarLeadCrm(event) {
     const leadData = {
         user_id: 1,
         customer_name: getVal('nombre'),
-        phone: getVal('telefono'),
+        phone: (getVal('telefono') || '').replace(/\D/g, ''),
         zip_code: getVal('codigo_postal'),
         service_type: getVal('servicio'),
         preferred_contact: getVal('metodo_contacto'),
@@ -112,3 +112,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+function aplicarMascaraTelefono() {
+    const inputTelefono = document.getElementById('telefono');
+    if (!inputTelefono) return;
+
+    inputTelefono.addEventListener('input', (e) => {
+        // Extraer solo dígitos numéricos y limitar a 10
+        let value = e.target.value.replace(/\D/g, '').slice(0, 10);
+        let formatted = '';
+
+        if (value.length > 0) {
+            if (value.length <= 3) {
+                formatted = `(${value}`;
+            } else if (value.length <= 6) {
+                formatted = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+            } else {
+                formatted = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6)}`;
+            }
+        }
+
+        e.target.value = formatted;
+    });
+}
+
+// Inicializar cuando el DOM esté listo
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', aplicarMascaraTelefono);
+} else {
+    aplicarMascaraTelefono();
+}

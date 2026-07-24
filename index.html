@@ -544,10 +544,10 @@
                                 </div>
                                 <div class="flex flex-col gap-2">
                                     <label class="font-label-md text-label-md text-on-surface">Phone</label>
-                                    <input id="telefono" required type="tel" maxlength="10" pattern="[0-9]{10}"
+                                    <input id="telefono" required type="tel" maxlength="14" pattern="^\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{4}$"
                                         class="h-14 px-4 border-2 border-outline-variant focus:border-primary-container focus:ring-0 transition-all rounded-sm bg-surface-container-lowest"
-                                        placeholder="Ej. 6641234567" />
-                                    <p class="phone-help-text italic">10 dígitos sin espacios ni guiones.</p>
+                                        placeholder="(555) 000-0000" />
+                                    <p class="phone-help-text italic">Ingresa tus 10 dígitos.</p>
                                 </div>
                             </div>
 
@@ -806,7 +806,8 @@
     <script src="conexion_frontend.js?v=1005"></script>
 
     <!-- Botón Flotante de WhatsApp -->
-    <a href="https://wa.me/1234567890"
+    <!-- NOTA: Reemplazar el número de teléfono en href por el número real de producción de WhatsApp Business API -->
+    <a id="btn-whatsapp-flotante" href="https://wa.me/15551738204?text=%C2%A1Hola!%20Quisiera%20recibir%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20mantenimiento."
         class="fixed bottom-5 right-5 z-[9999] bg-[#25D366] text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
         target="_blank" rel="noopener noreferrer">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
